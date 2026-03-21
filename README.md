@@ -17,6 +17,8 @@ Built because a YouTube tutorial shipped a steering wheel with no car attached, 
 ACE-Step-Installer/
 |-- INSTALL.bat                          <-- Windows: Double-click. That's the whole instruction.
 |-- install.sh                           <-- Linux: chmod +x install.sh && ./install.sh
+|-- UNINSTALL.bat                        <-- Windows: Clean removal.
+|-- uninstall.sh                         <-- Linux: chmod +x uninstall.sh && ./uninstall.sh
 |-- installer/
 |   |-- ACE-Step-Installer.ps1           <-- The actual installer (PowerShell, Windows)
 |   +-- launcher.py                      <-- Desktop launcher with system tray + update button
