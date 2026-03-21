@@ -17,7 +17,6 @@ Built because a YouTube tutorial shipped a steering wheel with no car attached, 
 ACE-Step-Installer/
 |-- INSTALL.bat                          <-- Windows: Double-click. That's the whole instruction.
 |-- install.sh                           <-- Linux: chmod +x install.sh && ./install.sh
-|-- Advanced_Install.bat                 <-- Don't.
 |-- installer/
 |   |-- ACE-Step-Installer.ps1           <-- The actual installer (PowerShell, Windows)
 |   +-- launcher.py                      <-- Desktop launcher with system tray + update button
@@ -26,10 +25,6 @@ ACE-Step-Installer/
 |-- README.md                            <-- You are here
 +-- LICENSE
 ```
-
-> **Note:** `Advanced_Install.bat` is a rickroll. There is no advanced install. If you're reading this, congratulations -- you read the README. The people who didn't are currently watching ASCII Rick Astley perform in a terminal window.
-
-> **SECURITY DISCLAIMER:** `Advanced_Install.bat` contains a harmless Rickroll prank script. Automated security scanners and local antivirus software *will* flag the `iex` web-request behavior as a false positive because it structurally mimics a remote code dropper. There is no actual malware or destructive payload. Review the batch logic directly if you have concerns.
 
 ---
 
@@ -202,7 +197,3 @@ Some desktop environments need you to right-click the `.desktop` file and mark i
 GPL-3.0. Free to use, modify, and distribute -- but any derivative work must also be open-source under the same license. That's the deal.
 
 The ACE-Step model itself is MIT licensed. This installer, WebUI, and launcher are GPL-3.0.
-
---- 
-
-Congratulations on not adding to the body count number of the Rick roll however we both know you're going to go click that button anyway and watch the ASCII Rick Astley perform in a terminal window. It's okay, I think have brain damage from how many times I clicked it.. So I won't tell anybody if you don't.. ❤️
