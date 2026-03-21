@@ -144,12 +144,49 @@ echo ""
 echo -e "${YELLOW}[3/5] Installing dependencies...${NC}"
 echo -e "  ${GRAY}(This may take a few minutes on first run)${NC}"
 
+# Detect GPU vendor BEFORE installing deps
+GPU_VENDOR="unknown"
+if command -v nvidia-smi &>/dev/null && nvidia-smi &>/dev/null; then
+    GPU_VENDOR="nvidia"
+    echo -e "  ${GREEN}[OK] NVIDIA GPU detected${NC}"
+elif command -v rocm-smi &>/dev/null || [ -d "/opt/rocm" ]; then
+    GPU_VENDOR="amd"
+    echo -e "  ${GREEN}[OK] AMD GPU detected (ROCm)${NC}"
+else
+    # Check lspci for AMD GPU even without ROCm installed
+    if lspci 2>/dev/null | grep -qi 'vga.*amd\|display.*amd\|vga.*radeon\|display.*radeon'; then
+        GPU_VENDOR="amd"
+        echo -e "  ${YELLOW}[!] AMD GPU detected but ROCm not found${NC}"
+        echo -e "  ${YELLOW}    Install ROCm first: https://rocm.docs.amd.com/en/latest/${NC}"
+        echo -e "  ${GRAY}    Continuing with ROCm PyTorch anyway...${NC}"
+    else
+        echo -e "  ${YELLOW}[!] No GPU detected - will use CPU mode${NC}"
+    fi
+fi
+
 uv sync
 if [ $? -ne 0 ]; then
     echo -e "  ${RED}[FAIL] UV sync failed${NC}"
     exit 1
 fi
 echo -e "  ${GREEN}[OK] Dependencies installed${NC}"
+
+# If AMD, replace CUDA torch with ROCm torch
+if [ "$GPU_VENDOR" = "amd" ]; then
+    echo -e "  ${CYAN}-> Replacing CUDA PyTorch with ROCm version...${NC}"
+    uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.2.4 --quiet
+    if [ $? -eq 0 ]; then
+        echo -e "  ${GREEN}[OK] ROCm PyTorch installed${NC}"
+    else
+        echo -e "  ${YELLOW}[!] ROCm PyTorch install failed - trying rocm6.1...${NC}"
+        uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1 --quiet
+        if [ $? -eq 0 ]; then
+            echo -e "  ${GREEN}[OK] ROCm 6.1 PyTorch installed${NC}"
+        else
+            echo -e "  ${RED}[!] ROCm PyTorch failed. Check ROCm version: https://pytorch.org/get-started/locally/${NC}"
+        fi
+    fi
+fi
 
 # Launcher GUI deps
 echo -e "  ${GRAY}Installing launcher dependencies...${NC}"
@@ -209,14 +246,13 @@ echo -e "  ${GRAY}Detecting GPU VRAM...${NC}"
 VRAM_GB=0
 GPU_NAME=""
 
-if command -v nvidia-smi &>/dev/null; then
+if [ "$GPU_VENDOR" = "nvidia" ] && command -v nvidia-smi &>/dev/null; then
     # Parse nvidia-smi for best GPU
     while IFS=',' read -r mem name; do
         mem=$(echo "$mem" | tr -d ' ')
         name=$(echo "$name" | xargs)
         if [ -n "$mem" ] && [ "$mem" -gt 0 ] 2>/dev/null; then
             gb=$(echo "scale=1; $mem / 1024" | bc 2>/dev/null || echo "0")
-            # Compare as integers (strip decimal for comparison)
             gb_int=${gb%.*}
             vram_int=${VRAM_GB%.*}
             if [ "${gb_int:-0}" -gt "${vram_int:-0}" ] 2>/dev/null; then
@@ -225,6 +261,29 @@ if command -v nvidia-smi &>/dev/null; then
             fi
         fi
     done < <(nvidia-smi --query-gpu=memory.total,name --format=csv,noheader,nounits 2>/dev/null)
+elif [ "$GPU_VENDOR" = "amd" ] && command -v rocm-smi &>/dev/null; then
+    # Parse rocm-smi for AMD GPU VRAM
+    # Try the newer JSON output first, fall back to text parsing
+    VRAM_BYTES=$(rocm-smi --showmeminfo vram --json 2>/dev/null | python3 -c "
+import sys, json
+try:
+    data = json.load(sys.stdin)
+    best = 0
+    for card in data.values():
+        if isinstance(card, dict):
+            total = int(card.get('VRAM Total Memory (B)', card.get('vram_total', 0)))
+            if total > best:
+                best = total
+    print(best)
+except:
+    print(0)
+" 2>/dev/null)
+    if [ -n "$VRAM_BYTES" ] && [ "$VRAM_BYTES" -gt 0 ] 2>/dev/null; then
+        VRAM_GB=$(echo "scale=1; $VRAM_BYTES / 1073741824" | bc 2>/dev/null || echo "0")
+    fi
+    # Get GPU name
+    GPU_NAME=$(rocm-smi --showproductname 2>/dev/null | grep -i "card series" | head -1 | sed 's/.*: *//' || echo "AMD GPU")
+    [ -z "$GPU_NAME" ] && GPU_NAME="AMD GPU"
 fi
 
 if [ "$(echo "$VRAM_GB >= 12" | bc 2>/dev/null)" = "1" ]; then
